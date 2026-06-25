@@ -189,30 +189,6 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           scrub: 1,
           pin: true,
           pinSpacing: false,
-          onUpdate: (self) => {
-            if (self.progress >= 0.95) {
-              gsap.set(".cards-trigger-container", {
-                position: "fixed",
-                top: 0,
-                left: 0,
-                width: "100%",
-                zIndex: 0,
-              });
-            } else {
-              gsap.set(".cards-trigger-container", {
-                position: "",
-                top: "",
-                left: "",
-                width: "",
-                zIndex: 10,
-              });
-            }
-          },
-          onLeaveBack: () => {
-            gsap.set(".cards-trigger-container", {
-              clearProps: "all",
-            });
-          }
         }
       })
       .to(".showcase-card", {
@@ -507,12 +483,12 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           </div>
         </section>
 
-        {/* Pinned Scroll Spacer (Compensates for 300vh pin duration minus 100vh section height) */}
+        {/* Pinned Scroll Spacer (Calculated as 300vh scroll trigger duration minus 100vh section height to prevent blank gap) */}
         <div className="w-full h-[200vh] pointer-events-none" />
 
         {/* Projects Section */}
-        <section className="w-full max-w-7xl px-6 pb-20 relative z-10 font-prompt" style={{ backgroundColor: 'var(--bg-color)' }}>
-          <div className="space-y-6">
+        <section className="w-full relative z-20 font-prompt pb-20" style={{ backgroundColor: 'var(--bg-color)' }}>
+          <div className="max-w-7xl mx-auto px-6 space-y-6">
             <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
               // 04. Selected Work
             </h2>
