@@ -5,7 +5,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const roles = ['Web3 Developer', 'Vibe Coder', 'ML Infrastructure', 'Consensus Builder'];
+const roles = ['Network Engineer', 'ML Engineer', 'Vibe Coder', 'Cloud Infrastructure'];
 
 const specialties = [
   'Internet Engineering Technology @ UGM',
