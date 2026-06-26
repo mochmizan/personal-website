@@ -146,7 +146,6 @@ const certifications: Certification[] = [
 ];
 
 export function LandingPage({ onEnter }: LandingPageProps) {
-  void certifications;
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -543,40 +542,66 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           </div>
         </section>
 
-        {/* Tech Stack Section */}
+        {/* Licenses & Certifications Section */}
         <section className="w-full max-w-7xl px-6 pb-20 z-10 font-roboto">
           <div className="space-y-6">
             <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
-              // 04. Tech Stack
+              // 04. Licenses & Certifications
             </h2>
             <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight font-roboto text-[24px] max-md:text-[19px]">
-              Skills & Technologies
+              Certifications
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-              {stackCategories.map((category, catIdx) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 pt-4">
+              {certifications.map((cert, idx) => (
                 <div 
-                  key={catIdx}
-                  className="p-6 border flex flex-col gap-4 rounded-none"
+                  key={idx} 
+                  className="relative flex items-stretch border rounded-none overflow-hidden group"
                   style={{ backgroundColor: 'var(--panel-bg)', borderColor: 'var(--panel-border-color)' }}
                 >
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-[var(--accent-color)] font-roboto border-b border-[var(--border-muted)] pb-2 text-[16px] font-semibold lg:font-semibold">
-                    {category.title}
-                  </h4>
-                  <div className="flex flex-wrap gap-2.5 font-roboto">
-                    {category.items.map((item, itemIdx) => (
-                      <div 
-                        key={itemIdx}
-                        className="flex items-center gap-2 px-3 py-1.5 bg-[var(--panel-bg-darker)] border border-[var(--border-muted)] hover:border-[var(--accent-color)] transition-colors duration-200"
-                      >
-                        <img 
-                          src={item.icon} 
-                          alt={item.name}
-                          className="w-5 h-5 object-contain"
-                        />
-                        <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
+                  {/* Logo container on the left, filling height flush to borders */}
+                  <div className="w-24 sm:w-28 md:w-32 shrink-0 overflow-hidden relative bg-neutral-900 border-r border-[var(--panel-border-color)]">
+                    <img 
+                      src="/images/dicoding_logo.jpg" 
+                      alt="Dicoding Indonesia Logo" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  
+                  {/* Details container on the right */}
+                  <div className="flex-1 p-4 md:p-6 flex flex-col justify-between gap-4">
+                    {/* Top Row: Details + Dates */}
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+                      <div className="flex flex-col gap-1">
+                        <h4 className="text-[15px] md:text-[16px] text-white font-bold leading-tight font-roboto">
+                          {cert.title}
+                        </h4>
+                        <p className="text-[13px] text-[#a2b0a4] font-medium font-roboto">
+                          {cert.issuer}
+                        </p>
+                        <p className="text-[12px] text-[#a2b0a4] opacity-80 font-roboto mt-0.5">
+                          Credential ID {cert.credentialId}
+                        </p>
                       </div>
-                    ))}
+                      
+                      {/* Dates on the top right on desktop */}
+                      <div className="text-[12px] text-[#a2b0a4] opacity-90 font-roboto md:text-right shrink-0">
+                        Issued {cert.issueDate} · Expires {cert.expiryDate}
+                      </div>
+                    </div>
+                    
+                    {/* Bottom Row: Show Credential Button on the bottom right */}
+                    <div className="flex justify-end mt-auto">
+                      <a
+                        href={cert.url}
+                        className="inline-flex items-center gap-1.5 px-4 py-1.5 text-[12px] font-bold text-white border border-[var(--border-muted)] rounded-full hover:bg-white/10 hover:border-white transition-colors font-roboto"
+                      >
+                        Show credential
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
