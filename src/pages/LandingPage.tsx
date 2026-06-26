@@ -260,6 +260,7 @@ export function LandingPage() {
   const [expandedAwards, setExpandedAwards] = useState<Set<number>>(new Set());
   const [expandedExps, setExpandedExps] = useState<Set<number>>(new Set());
   const [showAllExperiences, setShowAllExperiences] = useState(false);
+  const [showAllCertifications, setShowAllCertifications] = useState(false);
 
   const toggleAward = (idx: number) => setExpandedAwards(prev => {
     const next = new Set(prev);
@@ -766,7 +767,7 @@ export function LandingPage() {
             </h3>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 pt-4">
-              {certifications.map((cert, idx) => (
+              {(showAllCertifications ? certifications : certifications.slice(0, 4)).map((cert, idx) => (
                 <div 
                   key={idx} 
                   className="relative flex items-start border rounded-none overflow-hidden group p-4 md:p-5"
@@ -802,6 +803,17 @@ export function LandingPage() {
                 </div>
               ))}
             </div>
+
+            {certifications.length > 4 && (
+              <div className="flex justify-start mt-8">
+                <button
+                  onClick={() => setShowAllCertifications(prev => !prev)}
+                  className="psyche-btn text-[10px] font-bold px-3 py-1.5"
+                >
+                  {showAllCertifications ? '[ SHOW LESS ]' : '[ SHOW MORE ]'}
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
