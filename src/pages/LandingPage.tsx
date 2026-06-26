@@ -63,36 +63,44 @@ const stackCategories: StackCategory[] = [
   {
     title: 'Programming Language',
     items: [
-      { name: 'Typescript', icon: '/images/stack/ts.svg' },
-      { name: 'Javascript', icon: '/images/stack/js.svg' },
-      { name: 'Golang', icon: '/images/stack/go.svg' }
+      { name: 'Python', icon: 'https://cdn.simpleicons.org/python' },
+      { name: 'JavaScript', icon: 'https://cdn.simpleicons.org/javascript' },
+      { name: 'PHP', icon: 'https://cdn.simpleicons.org/php' }
     ]
   },
   {
-    title: 'Framework and Library',
+    title: 'Framework & Libraries',
     items: [
-      { name: 'Next JS', icon: '/images/stack/next.svg' },
-      { name: 'Tailwind', icon: '/images/stack/tailwind.svg' },
-      { name: 'Shadcn-ui', icon: '/images/stack/shadcn.svg' },
-      { name: 'Flutter', icon: '/images/stack/flutter.svg' },
-      { name: 'Gin', icon: '/images/stack/go.svg' }
+      { name: 'FastAPI', icon: 'https://cdn.simpleicons.org/fastapi' },
+      { name: 'React', icon: 'https://cdn.simpleicons.org/react' },
+      { name: 'Nuxt.js', icon: 'https://cdn.simpleicons.org/nuxt' },
+      { name: 'Pandas', icon: '/images/stack/pandas.svg' },
+      { name: 'NumPy', icon: 'https://www.svgrepo.com/show/373938/numpy.svg' },
+      { name: 'Matplotlib', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg' },
+      { name: 'Seaborn', icon: 'https://seaborn.pydata.org/_images/logo-mark-lightbg.svg' },
+      { name: 'Scikit-Learn', icon: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg' },
+      { name: 'Leaflet', icon: 'https://cdn.simpleicons.org/leaflet' }
     ]
   },
   {
-    title: 'Animation',
+    title: 'Tech & Tools',
     items: [
-      { name: 'GSAP', icon: '/images/stack/gsap.jpg' },
-      { name: 'Scroll Magic', icon: '/images/stack/scrollmagic.jpg' },
-      { name: 'Frammer Motion', icon: '/images/stack/frammer.svg' },
-      { name: 'AOS', icon: '/images/stack/aos.png' }
+      { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker' },
+      { name: 'Vercel', icon: 'https://cdn.simpleicons.org/vercel' },
+      { name: 'Git', icon: 'https://cdn.simpleicons.org/git' },
+      { name: 'GitHub', icon: 'https://cdn.simpleicons.org/github' },
+      { name: 'Linux', icon: 'https://cdn.simpleicons.org/linux' },
+      { name: 'Cisco CCNA', icon: 'https://cdn.simpleicons.org/cisco' }
     ]
   },
   {
-    title: 'Project Management',
+    title: 'AI Engineering',
     items: [
-      { name: 'Github Projects', icon: '/images/stack/gh.svg' },
-      { name: 'Jira', icon: '/images/stack/jira.svg' },
-      { name: 'Notion', icon: '/images/stack/notion.svg' }
+      { name: 'Claude Code', icon: 'https://cdn.simpleicons.org/claude' },
+      { name: 'Gemini API', icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/google-gemini.svg' },
+      { name: 'Antigravity', icon: 'https://static.wikia.nocookie.net/logopedia/images/4/4a/Google_Antigravity_icon.svg/revision/latest/scale-to-width-down/1200?cb=20251119202403' },
+      { name: 'Cursor', icon: 'https://cdn.simpleicons.org/cursor' },
+      { name: 'Codex', icon: '/images/stack/codex-color.svg' }
     ]
   }
 ];
@@ -546,7 +554,7 @@ export function LandingPage() {
                             alt={item.name}
                             width={32}
                             height={32}
-                            className="w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain"
+                            className={`w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain ${item.name === 'Linux' ? 'brightness-0' : ''}`}
                           />
                           <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-mono">{item.name}</span>
                         </div>
@@ -573,7 +581,7 @@ export function LandingPage() {
                             alt={item.name}
                             width={32}
                             height={32}
-                            className="w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain"
+                            className={`w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain ${item.name === 'Linux' ? 'brightness-0' : ''}`}
                           />
                           <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-mono">{item.name}</span>
                         </div>
