@@ -345,78 +345,12 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           </div>
         </section>
 
-        {/* Tech Stack Section */}
-        <section className="w-full max-w-7xl px-6 pb-20 z-10 font-roboto">
-          <div className="space-y-6">
-            <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
-              // 02. Tech Stack
-            </h2>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight font-roboto text-[24px] max-md:text-[19px]">
-              Skills & Technologies
-            </h3>
-            
-            <div className="w-full flex flex-col md:flex-row md:gap-12 gap-8 justify-start items-start pt-4">
-              {/* Left Column: Programming Languages & Framework and Library */}
-              <div className="w-full md:w-1/2 flex flex-col gap-8">
-                {stackCategories.slice(0, 2).map((category, catIdx) => (
-                  <div key={catIdx} className="flex flex-col gap-3">
-                    <p className="font-roboto text-[16px] font-medium lg:font-semibold mb-1" style={{ color: 'var(--accent-color)' }}>
-                      {category.title}
-                    </p>
-                    <div className="flex justify-start flex-wrap items-center gap-x-6 gap-y-3 font-roboto">
-                      {category.items.map((item, itemIdx) => (
-                        <div 
-                          key={itemIdx}
-                          className="flex items-center gap-2 transition-colors duration-200 group/tag cursor-default"
-                        >
-                          <img 
-                            src={item.icon} 
-                            alt={item.name}
-                            className="w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain"
-                          />
-                          <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Right Column: Animation & Project Management */}
-              <div className="w-full md:w-1/2 flex flex-col gap-8">
-                {stackCategories.slice(2, 4).map((category, catIdx) => (
-                  <div key={catIdx + 2} className="flex flex-col gap-3">
-                    <p className="font-roboto text-[16px] font-medium lg:font-semibold mb-1" style={{ color: 'var(--accent-color)' }}>
-                      {category.title}
-                    </p>
-                    <div className="flex justify-start flex-wrap items-center gap-x-6 gap-y-3 font-roboto">
-                      {category.items.map((item, itemIdx) => (
-                        <div 
-                          key={itemIdx}
-                          className="flex items-center gap-2 transition-colors duration-200 group/tag cursor-default"
-                        >
-                          <img 
-                            src={item.icon} 
-                            alt={item.name}
-                            className="w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain"
-                          />
-                          <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Featured Projects (GSAP Pinned Stacking Showcase) */}
         <section className="cards-trigger-container w-full h-screen relative flex flex-col justify-between py-12 px-6 md:px-12 z-10 font-prompt select-none overflow-hidden">
           {/* Header (stays visible while pinned) */}
           <div className="space-y-2 w-full max-w-7xl mx-auto">
             <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
-              // 03. Featured Projects
+              // 02. Featured Projects
             </h2>
             <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight font-roboto text-[24px] max-md:text-[19px]">
               Project Showcase
@@ -498,76 +432,43 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section className="w-full max-w-7xl px-6 pb-20 z-10 font-prompt">
+        {/* Tech Stack Section */}
+        <section className="w-full max-w-7xl px-6 pb-20 z-10 font-roboto">
           <div className="space-y-6">
             <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
-              // 04. Selected Work
+              // 03. Tech Stack
             </h2>
             <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight font-roboto text-[24px] max-md:text-[19px]">
-              Projects & Experiments
+              Skills & Technologies
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 w-full">
-              {projects.map((project, idx) => {
-                const CardComponent = project.url ? 'a' : 'div';
-                return (
-                  <CardComponent
-                    key={idx}
-                    {...(project.url ? {
-                      href: project.url,
-                      target: "_blank",
-                      rel: "noopener noreferrer"
-                    } : {})}
-                    className={`border overflow-hidden flex flex-col rounded-none group transition-all duration-300 hover:border-[var(--accent-color)] hover:shadow-lg ${project.url ? 'cursor-pointer' : 'cursor-default'} font-prompt`}
-                    style={{ backgroundColor: 'var(--panel-bg)', borderColor: 'var(--panel-border-color)' }}
-                  >
-                    {/* Aspect Video Screenshot Frame */}
-                    <div className="aspect-video w-full overflow-hidden relative border-b border-[var(--border-muted)] bg-[var(--panel-bg-darker)]">
-                      {/* Retro Subtle Scanlines overlay */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+              {stackCategories.map((category, catIdx) => (
+                <div 
+                  key={catIdx}
+                  className="p-6 border flex flex-col gap-4 rounded-none"
+                  style={{ backgroundColor: 'var(--panel-bg)', borderColor: 'var(--panel-border-color)' }}
+                >
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-[var(--accent-color)] font-roboto border-b border-[var(--border-muted)] pb-2 text-[16px] font-semibold lg:font-semibold">
+                    {category.title}
+                  </h4>
+                  <div className="flex flex-wrap gap-2.5 font-roboto">
+                    {category.items.map((item, itemIdx) => (
                       <div 
-                        className="absolute inset-0 pointer-events-none z-10" 
-                        style={{
-                          background: 'repeating-linear-gradient(rgba(18, 16, 16, 0) 0px, rgba(18, 16, 16, 0) 1px, rgba(0, 0, 0, 0.15) 2px, rgba(0, 0, 0, 0.15) 3px)',
-                          mixBlendMode: 'overlay'
-                        }}
-                      />
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    
-                    {/* Card Details */}
-                    <div className="p-5 flex flex-col gap-3 flex-1 font-prompt">
-                      <div className="flex items-start justify-between gap-2">
-                        <h4 className="text-[24px] max-lg:text-[18px] font-semibold text-white leading-snug font-prompt">
-                          {project.title}
-                        </h4>
-                        <span className="text-[20px] max-lg:text-[14px] text-white shrink-0 mt-1 font-medium font-prompt">
-                          {project.year}
-                        </span>
+                        key={itemIdx}
+                        className="flex items-center gap-2 px-3 py-1.5 bg-[var(--panel-bg-darker)] border border-[var(--border-muted)] hover:border-[var(--accent-color)] transition-colors duration-200"
+                      >
+                        <img 
+                          src={item.icon} 
+                          alt={item.name}
+                          className="w-5 h-5 object-contain"
+                        />
+                        <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
                       </div>
-                      <p className="text-[15px] max-lg:text-[14px] leading-relaxed text-white font-light flex-1 font-prompt">
-                        {project.description}
-                      </p>
-                      
-                      {/* Technology tags */}
-                      <div className="flex flex-wrap gap-1.5 pt-2 font-prompt">
-                        {project.tags.map((tag, tagIdx) => (
-                          <span 
-                            key={tagIdx}
-                            className="px-2 py-0.5 rounded-none text-[16px] max-lg:text-[10px] font-bold tracking-wider bg-[var(--panel-bg-darker)] text-[var(--accent-color)] border border-[var(--border-muted)] font-prompt"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </CardComponent>
-                );
-              })}
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
