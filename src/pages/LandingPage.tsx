@@ -901,8 +901,8 @@ export function LandingPage() {
                     <div className="flex justify-between items-center text-[12px] max-lg:text-[10px] text-white font-light font-mono mt-0.5 w-full">
                       <span>{cert.credentialId ? `Cred ID ${cert.credentialId}` : ''}</span>
                       <span>
-                        Issued {cert.issueDate}
-                        {cert.expiryDate ? ` · Expires ${cert.expiryDate}` : ''}
+                        {cert.issueDate}
+                        {cert.expiryDate ? ` · ${cert.expiryDate}` : ''}
                       </span>
                     </div>
                   </div>
