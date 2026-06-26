@@ -372,7 +372,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
                           <img 
                             src={item.icon} 
                             alt={item.name}
-                            className="w-6 h-6 max-lg:w-5 max-lg:h-5 object-contain"
+                            className="w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain"
                           />
                           <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
                         </div>
@@ -398,7 +398,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
                           <img 
                             src={item.icon} 
                             alt={item.name}
-                            className="w-6 h-6 max-lg:w-5 max-lg:h-5 object-contain"
+                            className="w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain"
                           />
                           <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
                         </div>
