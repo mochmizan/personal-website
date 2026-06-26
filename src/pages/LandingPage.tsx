@@ -631,10 +631,11 @@ export function LandingPage() {
               Skills & Technologies
             </h3>
             
-            <div className="w-full flex flex-col md:flex-row md:gap-12 gap-8 justify-start items-start pt-4">
-              <div className="w-full md:w-1/2 flex flex-col gap-8">
-                {stackCategories.slice(0, 2).map((category, catIdx) => (
-                  <div key={catIdx} className="flex flex-col gap-3">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 pt-4">
+              {[0, 2, 1, 3].map((idx) => {
+                const category = stackCategories[idx];
+                return (
+                  <div key={idx} className="flex flex-col gap-3">
                     <p className="font-mono text-[16px] font-medium lg:font-semibold mb-1" style={{ color: 'var(--accent-color)' }}>
                       {category.title}
                     </p>
@@ -656,35 +657,8 @@ export function LandingPage() {
                       ))}
                     </div>
                   </div>
-                ))}
-              </div>
-
-              <div className="w-full md:w-1/2 flex flex-col gap-8">
-                {stackCategories.slice(2, 4).map((category, catIdx) => (
-                  <div key={catIdx + 2} className="flex flex-col gap-3">
-                    <p className="font-mono text-[16px] font-medium lg:font-semibold mb-1" style={{ color: 'var(--accent-color)' }}>
-                      {category.title}
-                    </p>
-                    <div className="flex justify-start flex-wrap items-center gap-x-6 gap-y-3 font-mono">
-                      {category.items.map((item, itemIdx) => (
-                        <div 
-                          key={itemIdx}
-                          className="flex items-center gap-2 group/tag cursor-default"
-                        >
-                          <img 
-                            src={item.icon} 
-                            alt={item.name}
-                            width={32}
-                            height={32}
-                            className={`w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain ${item.name === 'Linux' ? 'brightness-0' : ''}`}
-                          />
-                          <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-mono">{item.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
