@@ -847,16 +847,32 @@ export function LandingPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 pt-4">
               {(showAllCertifications ? certifications : certifications.slice(0, 4)).map((cert, idx) => (
-                <a
+                <div
                   key={idx}
-                  href={cert.url}
-                  target={cert.url !== '#' ? "_blank" : undefined}
-                  rel={cert.url !== '#' ? "noopener noreferrer" : undefined}
-                  onClick={(e) => { if (cert.url === '#') e.preventDefault(); }}
-                  className={`relative flex items-start border rounded-none overflow-hidden group p-4 md:p-5 transition-colors duration-300 ${cert.url !== '#' ? 'hover:border-[var(--accent-color)] cursor-pointer' : 'cursor-default'}`}
+                  onClick={() => {
+                    if (cert.url !== '#') {
+                      const selection = window.getSelection();
+                      if (!selection || !selection.toString()) {
+                        window.open(cert.url, '_blank', 'noopener,noreferrer');
+                      }
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      if (cert.url !== '#') {
+                        window.open(cert.url, '_blank', 'noopener,noreferrer');
+                      }
+                    }
+                  }}
+                  role={cert.url !== '#' ? "link" : undefined}
+                  tabIndex={cert.url !== '#' ? 0 : undefined}
+                  className={`relative flex items-start border rounded-none overflow-hidden group p-4 md:p-5 transition-colors duration-300 select-text ${
+                    cert.url !== '#' ? 'hover:border-[var(--accent-color)] cursor-pointer focus:outline-none focus:border-[var(--accent-color)]' : 'cursor-default'
+                  }`}
                   style={{ backgroundColor: 'var(--panel-bg)', borderColor: 'var(--panel-border-color)' }}
                 >
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 overflow-hidden relative bg-neutral-900 flex items-center justify-center">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 overflow-hidden relative bg-neutral-900 flex items-center justify-center select-none">
                     <img
                       src={cert.logo}
                       alt={`${cert.issuer} Logo`}
@@ -866,17 +882,17 @@ export function LandingPage() {
                     />
                   </div>
 
-                  <div className="flex-1 pl-4 flex flex-col gap-1 min-w-0">
-                    <h4 className="text-[16px] max-lg:text-[14px] font-medium lg:font-semibold leading-tight font-mono text-white">
+                  <div className="flex-1 pl-4 flex flex-col gap-1 min-w-0 select-text">
+                    <h4 className="text-[16px] max-lg:text-[14px] font-medium lg:font-semibold leading-tight font-mono text-white select-text">
                       {cert.title}
                     </h4>
-                    <p className="text-[14px] max-lg:text-[12px] font-medium font-mono" style={{ color: 'var(--accent-color)' }}>
+                    <p className="text-[14px] max-lg:text-[12px] font-medium font-mono select-text" style={{ color: 'var(--accent-color)' }}>
                       {cert.issuer}
                     </p>
-                    <div className="relative w-full h-5 text-[12px] max-lg:text-[10px] text-white font-light font-mono mt-0.5 overflow-hidden">
+                    <div className="relative w-full h-5 text-[12px] max-lg:text-[10px] text-white font-light font-mono mt-0.5 overflow-hidden select-text">
                       {cert.credentialId ? (
-                        <div className="w-full overflow-hidden whitespace-nowrap">
-                          <span className="block overflow-hidden whitespace-nowrap leading-5" title={cert.credentialId}>
+                        <div className="w-full overflow-hidden whitespace-nowrap select-text">
+                          <span className="block overflow-hidden whitespace-nowrap leading-5 select-text" title={cert.credentialId}>
                             Cred ID {cert.credentialId}
                           </span>
                         </div>
@@ -895,7 +911,7 @@ export function LandingPage() {
                       </div>
                     </div>
                   </div>
-                </a>
+                </div>
               ))}
             </div>
 
