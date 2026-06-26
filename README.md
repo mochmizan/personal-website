@@ -1,4 +1,4 @@
-# Moch. Mizan Ghodafail — Personal Website
+# Personal Website (mizan-web)
 
 A premium, minimalist, and responsive developer portfolio built with React, TypeScript, and Tailwind CSS. The design uses a dark forest green monospace aesthetic powered entirely by the **Roboto Mono** font family and interactive animations.
 
