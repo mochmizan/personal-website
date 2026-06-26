@@ -74,11 +74,11 @@ const stackCategories: StackCategory[] = [
       { name: 'FastAPI', icon: 'https://cdn.simpleicons.org/fastapi' },
       { name: 'React', icon: 'https://cdn.simpleicons.org/react' },
       { name: 'Nuxt.js', icon: 'https://cdn.simpleicons.org/nuxt' },
-      { name: 'Pandas', icon: 'https://cdn.simpleicons.org/pandas' },
+      { name: 'Pandas', icon: 'https://pandas.pydata.org/static/img/pandas_white.svg' },
       { name: 'NumPy', icon: 'https://www.svgrepo.com/show/373938/numpy.svg' },
       { name: 'Matplotlib', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg' },
-      { name: 'Seaborn', icon: 'https://raw.githubusercontent.com/seaborn/seaborn.pydata.org/main/_images/logo-mark-lightbg.svg' },
-      { name: 'Scikit-Learn', icon: 'https://cdn.simpleicons.org/scikit-learn' },
+      { name: 'Seaborn', icon: 'https://seaborn.pydata.org/_images/logo-mark-lightbg.svg' },
+      { name: 'Scikit-Learn', icon: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg' },
       { name: 'Leaflet', icon: 'https://cdn.simpleicons.org/leaflet' }
     ]
   },
@@ -97,10 +97,10 @@ const stackCategories: StackCategory[] = [
     title: 'AI Engineering',
     items: [
       { name: 'Claude Code', icon: 'https://cdn.simpleicons.org/claude' },
-      { name: 'Gemini API', icon: 'https://cdn.simpleicons.org/googlegemini' },
-      { name: 'Antigravity', icon: 'https://cdn.simpleicons.org/googlegemini' },
+      { name: 'Gemini API', icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/google-gemini.svg' },
+      { name: 'Antigravity', icon: 'https://static.wikia.nocookie.net/logopedia/images/4/4a/Google_Antigravity_icon.svg/revision/latest/scale-to-width-down/1200?cb=20251119202403' },
       { name: 'Cursor', icon: 'https://cdn.simpleicons.org/cursor' },
-      { name: 'Codex', icon: 'https://cdn.simpleicons.org/openai' }
+      { name: 'Codex', icon: '/images/stack/codex-color.svg' }
     ]
   }
 ];
