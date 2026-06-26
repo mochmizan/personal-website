@@ -363,16 +363,20 @@ export function LandingPage({ onEnter }: LandingPageProps) {
                     <p className="font-roboto text-[16px] font-medium lg:font-semibold text-white mb-1">
                       {category.title}
                     </p>
-                    <div className="flex justify-start flex-wrap items-center gap-2 font-roboto">
+                    <div className="flex justify-start flex-wrap items-center gap-x-6 gap-y-3 font-roboto">
                       {category.items.map((item, itemIdx) => (
                         <div 
                           key={itemIdx}
-                          className="flex items-center gap-2 px-2 py-1 bg-[var(--panel-bg-darker)] border border-[var(--border-muted)] hover:border-[var(--accent-color)] transition-colors duration-200"
+                          className="flex items-center gap-2 transition-colors duration-200 group/tag cursor-default"
                         >
                           <img 
                             src={item.icon} 
                             alt={item.name}
-                            className="w-6 h-6 max-lg:w-5 max-lg:h-5 object-contain"
+                            className={`w-6 h-6 max-lg:w-5 max-lg:h-5 object-contain transition-all duration-200 ${
+                              item.icon.endsWith('.svg') 
+                                ? 'brightness-0 invert opacity-80 group-hover/tag:opacity-100' 
+                                : ''
+                            }`}
                           />
                           <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
                         </div>
@@ -389,16 +393,20 @@ export function LandingPage({ onEnter }: LandingPageProps) {
                     <p className="font-roboto text-[16px] font-medium lg:font-semibold text-white mb-1">
                       {category.title}
                     </p>
-                    <div className="flex justify-start flex-wrap items-center gap-2 font-roboto">
+                    <div className="flex justify-start flex-wrap items-center gap-x-6 gap-y-3 font-roboto">
                       {category.items.map((item, itemIdx) => (
                         <div 
                           key={itemIdx}
-                          className="flex items-center gap-2 px-2 py-1 bg-[var(--panel-bg-darker)] border border-[var(--border-muted)] hover:border-[var(--accent-color)] transition-colors duration-200"
+                          className="flex items-center gap-2 transition-colors duration-200 group/tag cursor-default"
                         >
                           <img 
                             src={item.icon} 
                             alt={item.name}
-                            className="w-6 h-6 max-lg:w-5 max-lg:h-5 object-contain"
+                            className={`w-6 h-6 max-lg:w-5 max-lg:h-5 object-contain transition-all duration-200 ${
+                              item.icon.endsWith('.svg') 
+                                ? 'brightness-0 invert opacity-80 group-hover/tag:opacity-100' 
+                                : ''
+                            }`}
                           />
                           <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
                         </div>
