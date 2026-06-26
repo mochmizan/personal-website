@@ -345,12 +345,78 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           </div>
         </section>
 
+        {/* Tech Stack Section (Borderless Column Style) */}
+        <section className="w-full max-w-7xl px-6 pb-20 z-10 font-roboto">
+          <div className="space-y-6">
+            <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
+              // 02. Tech Stack
+            </h2>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight font-roboto text-[24px] max-md:text-[19px]">
+              Skills & Technologies
+            </h3>
+            
+            <div className="w-full flex flex-col md:flex-row md:gap-12 gap-8 justify-start items-start pt-4">
+              {/* Left Column: Programming Languages & Framework and Library */}
+              <div className="w-full md:w-1/2 flex flex-col gap-8">
+                {stackCategories.slice(0, 2).map((category, catIdx) => (
+                  <div key={catIdx} className="flex flex-col gap-3">
+                    <p className="font-roboto text-[16px] font-medium lg:font-semibold mb-1" style={{ color: 'var(--accent-color)' }}>
+                      {category.title}
+                    </p>
+                    <div className="flex justify-start flex-wrap items-center gap-x-6 gap-y-3 font-roboto">
+                      {category.items.map((item, itemIdx) => (
+                        <div 
+                          key={itemIdx}
+                          className="flex items-center gap-2 transition-colors duration-200 group/tag cursor-default"
+                        >
+                          <img 
+                            src={item.icon} 
+                            alt={item.name}
+                            className="w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain"
+                          />
+                          <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Right Column: Animation & Project Management */}
+              <div className="w-full md:w-1/2 flex flex-col gap-8">
+                {stackCategories.slice(2, 4).map((category, catIdx) => (
+                  <div key={catIdx + 2} className="flex flex-col gap-3">
+                    <p className="font-roboto text-[16px] font-medium lg:font-semibold mb-1" style={{ color: 'var(--accent-color)' }}>
+                      {category.title}
+                    </p>
+                    <div className="flex justify-start flex-wrap items-center gap-x-6 gap-y-3 font-roboto">
+                      {category.items.map((item, itemIdx) => (
+                        <div 
+                          key={itemIdx}
+                          className="flex items-center gap-2 transition-colors duration-200 group/tag cursor-default"
+                        >
+                          <img 
+                            src={item.icon} 
+                            alt={item.name}
+                            className="w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain"
+                          />
+                          <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-roboto">{item.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Featured Projects (GSAP Pinned Stacking Showcase) */}
         <section className="cards-trigger-container w-full h-screen relative flex flex-col justify-between py-12 px-6 md:px-12 z-10 font-prompt select-none overflow-hidden">
           {/* Header (stays visible while pinned) */}
           <div className="space-y-2 w-full max-w-7xl mx-auto">
             <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
-              // 02. Featured Projects
+              // 03. Featured Projects
             </h2>
             <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight font-roboto text-[24px] max-md:text-[19px]">
               Project Showcase
@@ -436,7 +502,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
         <section className="w-full max-w-7xl px-6 pb-20 z-10 font-roboto">
           <div className="space-y-6">
             <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
-              // 03. Tech Stack
+              // 04. Tech Stack
             </h2>
             <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight font-roboto text-[24px] max-md:text-[19px]">
               Skills & Technologies
