@@ -5,7 +5,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const roles = ['Web3 Developer', 'Vibe Coder', 'ML Infrastructure', 'Consensus Builder'];
+const roles = ['Network Engineer', 'ML Engineer', 'Vibe Coder', 'Cloud Infrastructure'];
 
 const specialties = [
   'Internet Engineering Technology @ UGM',
@@ -32,11 +32,11 @@ const projects: Project[] = [
     image: '/projects/raksadana.webp'
   },
   {
-    title: 'GCS — UAV Ground Control Station',
+    title: 'GCS',
     year: '2025',
     description: "Browser-based ground control interface for drone/UAV operation built during Gamaforce UGM's developer recruitment trial, featuring satellite map view and flight simulation tooling.",
     tags: ['React', 'Leaflet', 'Geoman', 'JavaScript', 'Vite'],
-    url: '',
+    url: '#',
     image: '/projects/gcs.webp'
   },
   {
@@ -109,8 +109,9 @@ interface Certification {
   title: string;
   issuer: string;
   issueDate: string;
-  expiryDate: string;
-  credentialId: string;
+  expiryDate?: string;
+  credentialId?: string;
+  logo: string;
   url: string;
 }
 
@@ -121,7 +122,8 @@ const certifications: Certification[] = [
     issueDate: 'May 2026',
     expiryDate: 'May 2029',
     credentialId: 'JMZVOJ723XN9',
-    url: '#'
+    logo: '/images/dicoding.webp',
+    url: 'https://www.dicoding.com/certificates/JMZVOJ723XN9'
   },
   {
     title: 'Belajar Fundamental Deep Learning',
@@ -129,7 +131,8 @@ const certifications: Certification[] = [
     issueDate: 'May 2026',
     expiryDate: 'May 2029',
     credentialId: 'KEXLQJ64WPG2',
-    url: '#'
+    logo: '/images/dicoding.webp',
+    url: 'https://www.dicoding.com/certificates/KEXLQJ64WPG2'
   },
   {
     title: 'Belajar Machine Learning untuk Pemula',
@@ -137,7 +140,8 @@ const certifications: Certification[] = [
     issueDate: 'Apr 2026',
     expiryDate: 'Apr 2029',
     credentialId: '1RXYW1JEKZVM',
-    url: '#'
+    logo: '/images/dicoding.webp',
+    url: 'https://www.dicoding.com/certificates/1RXYW1JEKZVM'
   },
   {
     title: 'Belajar Dasar Git dengan GitHub',
@@ -145,7 +149,98 @@ const certifications: Certification[] = [
     issueDate: 'Feb 2026',
     expiryDate: 'Feb 2029',
     credentialId: '81P25E93NPOY',
+    logo: '/images/dicoding.webp',
+    url: 'https://www.dicoding.com/certificates/81P25E93NPOY'
+  },
+  {
+    title: 'Career Management Essentials',
+    issuer: 'IBM',
+    issueDate: 'Dec 2025',
+    logo: '/images/ibm.webp',
+    url: 'https://www.credly.com/badges/8a4ba2b1-621e-4f2d-b7dc-6b461fddab64'
+  },
+  {
+    title: 'Memulai Pemrograman dengan Python',
+    issuer: 'Dicoding Indonesia',
+    issueDate: 'Nov 2025',
+    expiryDate: 'Nov 2028',
+    credentialId: '4EXG313VDZRL',
+    logo: '/images/dicoding.webp',
+    url: 'https://www.dicoding.com/certificates/4EXG313VDZRL'
+  },
+  {
+    title: 'Belajar Dasar AI',
+    issuer: 'Dicoding Indonesia',
+    issueDate: 'Oct 2025',
+    expiryDate: 'Oct 2028',
+    credentialId: 'KEXL228G0ZG2',
+    logo: '/images/dicoding.webp',
+    url: 'https://www.dicoding.com/certificates/KEXL228G0ZG2'
+  },
+  {
+    title: 'CCNA: Switching, Routing, and Wireless Essentials',
+    issuer: 'Cisco',
+    issueDate: 'Jul 2025',
+    logo: '/images/cisco.webp',
+    url: 'https://www.credly.com/badges/27bd12b5-87b0-49ac-a7d6-1f78903feeee/linked_in_profile'
+  },
+  {
+    title: 'English for IT 2',
+    issuer: 'Cisco',
+    issueDate: 'Jun 2025',
+    logo: '/images/cisco.webp',
+    url: 'https://www.credly.com/badges/1c877dcc-bd17-4fff-96d8-1ac1e3a15f70/linked_in_profile'
+  },
+  {
+    title: 'Digital Awareness',
+    issuer: 'Cisco',
+    issueDate: 'Apr 2025',
+    logo: '/images/cisco.webp',
+    url: 'https://www.credly.com/badges/5faf79d0-cbde-4464-8882-8107bd44a386/linked_in_profile'
+  },
+  {
+    title: 'Python Data Fundamentals',
+    issuer: 'DataCamp',
+    issueDate: 'Jan 2025',
+    expiryDate: 'Jan 2027',
+    credentialId: '930e1741d713e671385577a6fca9831cfee6f402',
+    logo: '/images/datacamp.webp',
     url: '#'
+  },
+  {
+    title: 'CCNA: Introduction to Networks',
+    issuer: 'Cisco',
+    issueDate: 'Dec 2024',
+    logo: '/images/cisco.webp',
+    url: 'https://www.credly.com/badges/a609f131-74ef-4442-8dfc-a04fadbb6fc4/linked_in_profile'
+  },
+  {
+    title: 'Creating Compelling Reports',
+    issuer: 'Cisco',
+    issueDate: 'Dec 2024',
+    logo: '/images/cisco.webp',
+    url: 'https://www.credly.com/badges/6e0bbf7a-c24b-4b14-9cc7-c993f9b30812/linked_in_profile'
+  },
+  {
+    title: 'Python Essentials 1',
+    issuer: 'Cisco',
+    issueDate: 'Dec 2024',
+    logo: '/images/cisco.webp',
+    url: 'https://www.credly.com/badges/84597499-6893-48fe-b773-0c6a73bfd46d/linked_in_profile'
+  },
+  {
+    title: 'English for IT 1',
+    issuer: 'Cisco',
+    issueDate: 'Oct 2024',
+    logo: '/images/cisco.webp',
+    url: 'https://www.credly.com/badges/7e04af74-2207-4ab7-8d72-44a31993dfc5/linked_in_profile'
+  },
+  {
+    title: 'Computer Hardware Basics',
+    issuer: 'Cisco',
+    issueDate: 'Sep 2024',
+    logo: '/images/cisco.webp',
+    url: 'https://www.credly.com/badges/3c0862ab-e328-417d-9e2d-f37fab411381/linked_in_profile'
   }
 ];
 
@@ -209,8 +304,8 @@ const experiences: ExperienceEntry[] = [
     ]
   },
   {
-    title: 'Staff of Science and Technology – FORKOMTI SV UGM',
-    org: 'FORKOMTI SV UGM',
+    title: 'Staff of Science and Technology – FORKOMTRI SV UGM',
+    org: 'FORKOMTRI SV UGM',
     period: 'May 2025 – Present',
     bullets: [
       'Academic technology community coordination, technical planning, and student networking infrastructure development.'
@@ -238,7 +333,8 @@ const experiences: ExperienceEntry[] = [
     org: 'GAMAFORCE UGM',
     period: 'Nov 2025 – Dec 2025',
     bullets: [
-      'Built a browser-based Ground Control Station (GCS) for UAV/drone operation as part of the recruitment development trial.'
+      'Contributed React and Leaflet implementations for UAV Ground Control Station software trials.',
+      'Programmed flight telemetry visualization logs and designed flight zone boundaries using Geoman.'
     ],
     url: '#'
   },
@@ -247,7 +343,7 @@ const experiences: ExperienceEntry[] = [
     org: 'Universitas Gadjah Mada',
     period: 'Aug 2025 – Dec 2025',
     bullets: [
-      'Assisted in practical lab sessions covering computer fundamentals, networking basics, and student support.'
+      'Laboratory Assistant for Basic Computer Work. Guided freshman students on Linux environments, virtual machines, and office configurations.'
     ],
     url: '#'
   }
@@ -284,7 +380,7 @@ export function LandingPage() {
 
   useEffect(() => {
     const activeRole = roles[roleIndex];
-    
+
     const handleTyping = () => {
       if (!isDeleting) {
         const nextText = activeRole.substring(0, displayedText.length + 1);
@@ -314,7 +410,7 @@ export function LandingPage() {
 
   useEffect(() => {
     const activeSpecialty = specialties[specialtyIndex];
-    
+
     const handleTyping = () => {
       if (!isSpecialtyDeleting) {
         const nextText = activeSpecialty.substring(0, displayedSpecialty.length + 1);
@@ -375,24 +471,24 @@ export function LandingPage() {
         opacity: 0,
         ease: "power1.inOut"
       }, 0)
-      .to(".showcase-card-1", {
-        y: 0,
-        ease: "power1.inOut"
-      }, 0)
-      .to(".showcase-card-2", {
-        y: 20,
-        ease: "power1.inOut"
-      }, 0);
+        .to(".showcase-card-1", {
+          y: 0,
+          ease: "power1.inOut"
+        }, 0)
+        .to(".showcase-card-2", {
+          y: 20,
+          ease: "power1.inOut"
+        }, 0);
 
       tl.to(".showcase-card-1", {
         yPercent: -105,
         opacity: 0,
         ease: "power1.inOut"
       }, 0.5)
-      .to(".showcase-card-2", {
-        y: 0,
-        ease: "power1.inOut"
-      }, 0.5);
+        .to(".showcase-card-2", {
+          y: 0,
+          ease: "power1.inOut"
+        }, 0.5);
     });
 
     return () => ctx.revert();
@@ -446,13 +542,13 @@ export function LandingPage() {
       <div className="w-full bg-pattern-dark flex flex-col items-center border-t border-[var(--accent-color)]" style={{ backgroundColor: 'var(--bg-color)' }}>
         <section className="w-full max-w-7xl px-6 py-20 z-10 font-mono">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
+
             {/* Left Column */}
             <div className="lg:col-span-5 flex flex-col gap-6 items-center lg:items-start">
               <div className="profile-image-placeholder">
-                <img 
-                  src="/profile.webp" 
-                  alt="Moch Mizan Ghodafail" 
+                <img
+                  src="/profile.webp"
+                  alt="Moch Mizan Ghodafail"
                   width={280}
                   height={350}
                   className="profile-image-actual"
@@ -464,7 +560,7 @@ export function LandingPage() {
                   Portrait of Me
                 </h2>
                 <div className="border-t border-[var(--accent-color)] w-full py-0.5" />
-                
+
                 <div className="font-mono text-[11px] uppercase tracking-wider h-6 flex items-center justify-center lg:justify-start" style={{ color: 'var(--accent-color)' }}>
                   <span>&gt; {displayedSpecialty}</span>
                   <span className="animate-pulse ml-0.5 font-normal">|</span>
@@ -472,23 +568,25 @@ export function LandingPage() {
               </div>
 
               <div className="flex flex-wrap gap-3 pt-2 text-[10px] font-bold uppercase tracking-wider justify-center lg:justify-start font-mono">
-                <a 
-                  href="#resume" 
+                <a
+                  href="https://drive.google.com/file/d/1TFVVgRMZgInLLJQin3piV2WIMlDhJsW1/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="psyche-btn text-[10px] font-bold px-3 py-1.5"
                 >
                   [ DOWNLOAD CV ]
                 </a>
-                <a 
-                  href="https://github.com/mie-intel" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/mochmizan"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="psyche-btn text-[10px] font-bold px-3 py-1.5"
                 >
                   [ GITHUB ]
                 </a>
-                <a 
-                  href="https://linkedin.com" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/in/mochmizanghodafail/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="psyche-btn text-[10px] font-bold px-3 py-1.5"
                 >
@@ -535,49 +633,23 @@ export function LandingPage() {
             <h3 className="font-mono font-bold text-[24px] max-md:text-[19px] tracking-tight leading-tight text-white text-wrap-balance">
               Skills & Technologies
             </h3>
-            
-            <div className="w-full flex flex-col md:flex-row md:gap-12 gap-8 justify-start items-start pt-4">
-              <div className="w-full md:w-1/2 flex flex-col gap-8">
-                {stackCategories.slice(0, 2).map((category, catIdx) => (
-                  <div key={catIdx} className="flex flex-col gap-3">
-                    <p className="font-mono text-[16px] font-medium lg:font-semibold mb-1" style={{ color: 'var(--accent-color)' }}>
-                      {category.title}
-                    </p>
-                    <div className="flex justify-start flex-wrap items-center gap-x-6 gap-y-3 font-mono">
-                      {category.items.map((item, itemIdx) => (
-                        <div 
-                          key={itemIdx}
-                          className="flex items-center gap-2 group/tag cursor-default"
-                        >
-                          <img 
-                            src={item.icon} 
-                            alt={item.name}
-                            width={32}
-                            height={32}
-                            className={`w-8 h-8 max-lg:w-6 max-lg:h-6 object-contain ${item.name === 'Linux' ? 'brightness-0' : ''}`}
-                          />
-                          <span className="text-[14px] max-lg:text-[12px] text-white font-medium font-mono">{item.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
 
-              <div className="w-full md:w-1/2 flex flex-col gap-8">
-                {stackCategories.slice(2, 4).map((category, catIdx) => (
-                  <div key={catIdx + 2} className="flex flex-col gap-3">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 pt-4">
+              {[0, 2, 1, 3].map((idx) => {
+                const category = stackCategories[idx];
+                return (
+                  <div key={idx} className="flex flex-col gap-3">
                     <p className="font-mono text-[16px] font-medium lg:font-semibold mb-1" style={{ color: 'var(--accent-color)' }}>
                       {category.title}
                     </p>
                     <div className="flex justify-start flex-wrap items-center gap-x-6 gap-y-3 font-mono">
                       {category.items.map((item, itemIdx) => (
-                        <div 
+                        <div
                           key={itemIdx}
                           className="flex items-center gap-2 group/tag cursor-default"
                         >
-                          <img 
-                            src={item.icon} 
+                          <img
+                            src={item.icon}
                             alt={item.name}
                             width={32}
                             height={32}
@@ -588,8 +660,8 @@ export function LandingPage() {
                       ))}
                     </div>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -608,19 +680,19 @@ export function LandingPage() {
           <div className="flex-1 flex items-center justify-center w-full max-w-4xl mx-auto relative my-4">
             <ul className="relative w-full h-[60vh] md:h-[65vh] list-none p-0 flex items-center justify-center">
               {projects.map((project, idx) => (
-                <li 
+                <li
                   key={idx}
                   className={`showcase-card showcase-card-${idx} absolute top-0 left-0 w-full h-full border border-[var(--panel-border-color)] hover:border-[var(--accent-color)] transition-[border-color,transform] duration-500 rounded-none bg-cover bg-center grayscale hover:grayscale-0 flex flex-col justify-end`}
-                  style={{ 
+                  style={{
                     backgroundImage: `url(${project.image})`,
                     zIndex: 10 + (projects.length - idx),
                     transform: `translateY(${idx * 20}px)`
                   }}
                 >
                   <div className="absolute inset-0 bg-black/60 transition-colors duration-300 pointer-events-none z-0" />
-                  
-                  <div 
-                    className="absolute inset-0 pointer-events-none z-10" 
+
+                  <div
+                    className="absolute inset-0 pointer-events-none z-10"
                     style={{
                       background: 'repeating-linear-gradient(rgba(18, 16, 16, 0) 0px, rgba(18, 16, 16, 0) 1px, rgba(0, 0, 0, 0.15) 2px, rgba(0, 0, 0, 0.15) 3px)',
                       mixBlendMode: 'overlay'
@@ -657,7 +729,7 @@ export function LandingPage() {
 
                       <div className="flex flex-wrap gap-1.5 font-mono">
                         {project.tags.map((tag, tagIdx) => (
-                          <span 
+                          <span
                             key={tagIdx}
                             className="px-2 py-0.5 text-[16px] max-lg:text-[10px] font-bold tracking-wider bg-[var(--panel-bg-darker)] text-[var(--accent-color)] border border-[var(--border-muted)]"
                           >
@@ -751,10 +823,10 @@ export function LandingPage() {
               </div>
 
               {experiences.length > 3 && (
-                <div className="flex justify-start mt-4">
+                <div className="flex justify-center mt-6">
                   <button
                     onClick={() => setShowAllExperiences(prev => !prev)}
-                    className="psyche-btn text-[10px] font-bold px-3 py-1.5"
+                    className="psyche-btn text-[10px] font-bold py-2 w-full max-w-[280px]"
                   >
                     {showAllExperiences ? '[ SHOW LESS ]' : '[ SHOW MORE ]'}
                   </button>
@@ -773,39 +845,71 @@ export function LandingPage() {
             <h3 className="font-mono font-bold text-[24px] max-md:text-[19px] tracking-tight leading-tight text-white text-wrap-balance">
               Certifications
             </h3>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 pt-4">
               {(showAllCertifications ? certifications : certifications.slice(0, 4)).map((cert, idx) => (
-                <div 
-                  key={idx} 
-                  className="relative flex items-start border rounded-none overflow-hidden group p-4 md:p-5"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    if (cert.url !== '#') {
+                      const selection = window.getSelection();
+                      if (!selection || !selection.toString()) {
+                        window.open(cert.url, '_blank', 'noopener,noreferrer');
+                      }
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      if (cert.url !== '#') {
+                        window.open(cert.url, '_blank', 'noopener,noreferrer');
+                      }
+                    }
+                  }}
+                  role={cert.url !== '#' ? "link" : undefined}
+                  tabIndex={cert.url !== '#' ? 0 : undefined}
+                  className={`relative flex items-start border rounded-none overflow-hidden group p-4 md:p-5 transition-colors duration-300 select-text ${
+                    cert.url !== '#' ? 'hover:border-[var(--accent-color)] cursor-pointer focus:outline-none focus:border-[var(--accent-color)]' : 'cursor-default'
+                  }`}
                   style={{ backgroundColor: 'var(--panel-bg)', borderColor: 'var(--panel-border-color)' }}
                 >
-                  <a 
-                    href={cert.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 overflow-hidden relative bg-neutral-900 flex items-center justify-center"
-                  >
-                    <img 
-                      src="/images/dicoding_logo.jpg" 
-                      alt="Dicoding Indonesia Logo" 
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 overflow-hidden relative bg-neutral-900 flex items-center justify-center select-none">
+                    <img
+                      src={cert.logo}
+                      alt={`${cert.issuer} Logo`}
                       width={56}
                       height={56}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                  </a>
-                  
-                  <div className="flex-1 pl-4 flex flex-col gap-1">
-                    <h4 className="text-[16px] max-lg:text-[14px] font-medium lg:font-semibold leading-tight font-mono text-white">
+                  </div>
+
+                  <div className="flex-1 pl-4 flex flex-col gap-1 min-w-0 select-text">
+                    <h4 className="text-[16px] max-lg:text-[14px] font-medium lg:font-semibold leading-tight font-mono text-white select-text">
                       {cert.title}
                     </h4>
-                    <p className="text-[14px] max-lg:text-[12px] font-medium font-mono" style={{ color: 'var(--accent-color)' }}>
+                    <p className="text-[14px] max-lg:text-[12px] font-medium font-mono select-text" style={{ color: 'var(--accent-color)' }}>
                       {cert.issuer}
                     </p>
-                    <div className="flex justify-between items-center text-[12px] max-lg:text-[10px] text-white font-light font-mono mt-0.5 w-full">
-                      <span>Cred ID {cert.credentialId}</span>
-                      <span>{cert.issueDate}</span>
+                    <div className="relative w-full h-5 text-[12px] max-lg:text-[10px] text-white font-light font-mono mt-0.5 overflow-hidden select-text">
+                      {cert.credentialId ? (
+                        <div className="w-full overflow-hidden whitespace-nowrap select-text">
+                          <span className="block overflow-hidden whitespace-nowrap leading-5 select-text" title={cert.credentialId}>
+                            Cred ID {cert.credentialId}
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="w-full h-full" />
+                      )}
+                      <div className="absolute right-0 top-0 bottom-0 flex items-center bg-[var(--panel-bg)] pl-2 z-10 select-none whitespace-nowrap">
+                        <div
+                          className="absolute left-0 top-0 bottom-0 w-24 -translate-x-full pointer-events-none"
+                          style={{ background: 'linear-gradient(to right, transparent 0%, var(--panel-bg) 70%)' }}
+                        />
+                        <span className="leading-5">
+                          {cert.issueDate}
+                          {cert.expiryDate ? ` · ${cert.expiryDate}` : ''}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -813,10 +917,10 @@ export function LandingPage() {
             </div>
 
             {certifications.length > 4 && (
-              <div className="flex justify-start mt-8">
+              <div className="flex justify-center !mt-12">
                 <button
                   onClick={() => setShowAllCertifications(prev => !prev)}
-                  className="psyche-btn text-[10px] font-bold px-3 py-1.5"
+                  className="psyche-btn text-[10px] font-bold py-2 w-full max-w-[280px]"
                 >
                   {showAllCertifications ? '[ SHOW LESS ]' : '[ SHOW MORE ]'}
                 </button>
@@ -831,24 +935,24 @@ export function LandingPage() {
             <h3 className="font-mono font-bold text-[24px] max-md:text-[19px] tracking-tight leading-none text-white">
               Lets Connect<span style={{ color: 'var(--accent-color)' }}>!</span>
             </h3>
-            
+
             <div className="flex gap-4 items-center">
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.linkedin.com/in/mochmizanghodafail/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 className="transition-transform duration-300 hover:scale-110"
                 style={{ color: 'var(--accent-color)' }}
               >
                 <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
-              <a 
-                href="https://github.com/mie-intel" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://github.com/mochmizan"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="GitHub"
                 className="transition-transform duration-300 hover:scale-110"
                 style={{ color: 'var(--accent-color)' }}

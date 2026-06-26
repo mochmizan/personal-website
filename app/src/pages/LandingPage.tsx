@@ -5,9 +5,6 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface LandingPageProps {
-  onEnter: () => void;
-}
 
 const roles = ['Web3 Developer', 'Vibe Coder', 'ML Infrastructure', 'Consensus Builder'];
 
@@ -145,7 +142,112 @@ const certifications: Certification[] = [
   }
 ];
 
-export function LandingPage({ onEnter }: LandingPageProps) {
+interface Award {
+  title: string;
+  issuer: string;
+  date: string;
+  description: string;
+  url?: string;
+}
+
+const awards: Award[] = [
+  {
+    title: '1st Winner – PROCOMMIT Excel Advance Programming',
+    issuer: 'PRODISTIK Institut Teknologi Sepuluh Nopember (ITS) | Associated with MAN Sidoarjo',
+    date: 'Nov 2022',
+    description: 'Focused on advanced spreadsheet programming and complex mathematical formulas.',
+    url: '#'
+  },
+  {
+    title: '3rd Winner – Programming and Computer Competition MAGE 8',
+    issuer: 'Himpunan Mahasiswa Teknik Komputer ITS',
+    date: 'Nov 2022',
+    description: 'Competed in algorithms, logical problem-solving, and implementation speed.',
+    url: '#'
+  },
+  {
+    title: '4th Place – Best Final Project PRODISTIK MAN Sidoarjo',
+    issuer: 'PRODISTIK MAN Sidoarjo',
+    date: 'May 2023',
+    description: 'Developed a PHP-based heritage division calculator translating Islamic jurisprudence rules into software logic.',
+    url: '#'
+  },
+  {
+    title: '2nd Runner Up – OLIEFEB Essay Competition',
+    issuer: 'Himpunan Mahasiswa Ilmu Ekonomi Universitas Brawijaya',
+    date: 'Oct 2021',
+    description: 'Co-authored an academic paper on socioeconomic policy dynamics.',
+    url: '#'
+  }
+];
+
+interface ExperienceEntry {
+  title: string;
+  org: string;
+  period: string;
+  bullets: string[];
+  url?: string;
+}
+
+const experiences: ExperienceEntry[] = [
+  {
+    title: 'AI Engineer Cohort – Pijak',
+    org: 'IBM SkillsBuild & Dicoding',
+    period: 'Jan 2026 – Present',
+    bullets: [
+      'Selected participant of Program Pijak, an AI scholarship program by Dicoding in collaboration with IBM SkillsBuild, targeting 30,000 Indonesian digital talents.',
+      'Completed intensive training in Machine Learning, Deep Learning, Python Programming, and MLOps.',
+      'Accessed IBM SkillsBuild materials covering AI, Generative AI, and AI Ethics with globally recognized credentials.',
+      'Built hands-on portfolios and machine learning endpoints as part of the program curriculum.'
+    ]
+  },
+  {
+    title: 'Staff of Science and Technology – FORKOMTRI SV UGM',
+    org: 'FORKOMTRI SV UGM',
+    period: 'May 2025 – Present',
+    bullets: [
+      'Academic technology community coordination, technical planning, and student networking infrastructure development.'
+    ]
+  },
+  {
+    title: 'Sub Coordinator of Competition – NETCOMP UGM',
+    org: 'NETCOMP UGM',
+    period: 'Sep 2025 – Mar 2026',
+    bullets: [
+      'Managed network competition logistics, scheduling, and technical routing for the National Networking Competition SV UGM.',
+      'Liaised between contests participants, event coordinators, and networking professional judges.'
+    ]
+  },
+  {
+    title: 'Competitive Programming Member – KOMATIK UGM',
+    org: 'KOMATIK UGM',
+    period: 'Feb 2025 – Mar 2026',
+    bullets: [
+      'Participated in algorithm training and programming competitions. Applied data structures and code optimizations in Python and C++.'
+    ]
+  },
+  {
+    title: 'Software Programmer Intern – GAMAFORCE UGM',
+    org: 'GAMAFORCE UGM',
+    period: 'Nov 2025 – Dec 2025',
+    bullets: [
+      'Contributed React and Leaflet implementations for UAV Ground Control Station software trials.',
+      'Programmed flight telemetry visualization logs and designed flight zone boundaries using Geoman.'
+    ],
+    url: '#'
+  },
+  {
+    title: 'Laboratory Assistant (Basic Computer Work) – Universitas Gadjah Mada',
+    org: 'Universitas Gadjah Mada',
+    period: 'Aug 2025 – Dec 2025',
+    bullets: [
+      'Laboratory Assistant for Basic Computer Work. Guided freshman students on Linux environments, virtual machines, and office configurations.'
+    ],
+    url: '#'
+  }
+];
+
+export function LandingPage() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -155,6 +257,21 @@ export function LandingPage({ onEnter }: LandingPageProps) {
   const [displayedSpecialty, setDisplayedSpecialty] = useState('');
   const [isSpecialtyDeleting, setIsSpecialtyDeleting] = useState(false);
   const [specialtyTypingSpeed, setSpecialtyTypingSpeed] = useState(100);
+
+  const [expandedAwards, setExpandedAwards] = useState<Set<number>>(new Set());
+  const [expandedExps, setExpandedExps] = useState<Set<number>>(new Set());
+
+  const toggleAward = (idx: number) => setExpandedAwards(prev => {
+    const next = new Set(prev);
+    next.has(idx) ? next.delete(idx) : next.add(idx);
+    return next;
+  });
+
+  const toggleExp = (idx: number) => setExpandedExps(prev => {
+    const next = new Set(prev);
+    next.has(idx) ? next.delete(idx) : next.add(idx);
+    return next;
+  });
 
   useEffect(() => {
     const activeRole = roles[roleIndex];
@@ -221,7 +338,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.timeline({
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".cards-trigger-container",
           start: "top top",
@@ -230,13 +347,33 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           pin: true,
           pinSpacing: true,
         }
-      })
-      .to(".showcase-card:not(:last-child)", {
+      });
+
+      // Slide card 0 up, while card 1 and card 2 move up (retaining original sizes)
+      tl.to(".showcase-card-0", {
         yPercent: -105,
         opacity: 0,
-        stagger: 0.5,
         ease: "power1.inOut"
-      });
+      }, 0)
+      .to(".showcase-card-1", {
+        y: 0,
+        ease: "power1.inOut"
+      }, 0)
+      .to(".showcase-card-2", {
+        y: 20,
+        ease: "power1.inOut"
+      }, 0);
+
+      // Slide card 1 up, while card 2 moves up
+      tl.to(".showcase-card-1", {
+        yPercent: -105,
+        opacity: 0,
+        ease: "power1.inOut"
+      }, 0.5)
+      .to(".showcase-card-2", {
+        y: 0,
+        ease: "power1.inOut"
+      }, 0.5);
     });
 
     return () => ctx.revert();
@@ -248,12 +385,6 @@ export function LandingPage({ onEnter }: LandingPageProps) {
         <div className="flex items-center gap-2">
           <span className="font-prompt font-extrabold text-2xl lowercase tracking-normal text-white">mizan-web</span>
         </div>
-        <button
-          onClick={onEnter}
-          className="psyche-btn text-xs font-prompt font-bold uppercase tracking-wider"
-        >
-          Explore Runs &rarr;
-        </button>
       </header>
 
       {/* Hero Section */}
@@ -468,15 +599,16 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           </div>
 
           {/* Cards Deck (centered in the remaining height) */}
-          <div className="flex-1 flex items-center justify-center w-full max-w-4xl mx-auto relative my-4 overflow-hidden">
+          <div className="flex-1 flex items-center justify-center w-full max-w-4xl mx-auto relative my-4">
             <ul className="relative w-full h-[60vh] md:h-[65vh] list-none p-0 flex items-center justify-center">
               {projects.map((project, idx) => (
                 <li 
                   key={idx}
-                  className="showcase-card absolute top-0 left-0 w-full h-full border border-[var(--panel-border-color)] hover:border-[var(--accent-color)] transition-all duration-500 rounded-none bg-cover bg-center grayscale hover:grayscale-0 flex flex-col justify-end"
+                  className={`showcase-card showcase-card-${idx} absolute top-0 left-0 w-full h-full border border-[var(--panel-border-color)] hover:border-[var(--accent-color)] transition-all duration-500 rounded-none bg-cover bg-center grayscale hover:grayscale-0 flex flex-col justify-end`}
                   style={{ 
                     backgroundImage: `url(${project.image})`,
                     zIndex: 10 + (projects.length - idx), // Lower indexes are on top (RaksaDana on top)
+                    transform: `translateY(${idx * 20}px)`
                   }}
                 >
                   {/* Overlay */}
@@ -542,65 +674,132 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           </div>
         </section>
 
+        {/* Experience Section */}
+        <section className="w-full max-w-7xl px-6 pb-20 z-10 font-roboto">
+          <div className="space-y-6">
+            <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
+              // 04. Experience
+            </h2>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight font-roboto text-[24px] max-md:text-[19px]">
+              Experience
+            </h3>
+
+            <div className="flex flex-col gap-0 pt-4">
+
+              {/* Honors & Awards sub-header */}
+              <h4 className="text-[16px] font-medium lg:font-semibold font-roboto mb-2" style={{ color: 'var(--accent-color)' }}>
+                Honors &amp; Awards
+              </h4>
+              <div className="flex flex-col">
+                {awards.map((award, idx) => {
+                  const open = expandedAwards.has(idx);
+                  return (
+                    <div key={idx} className="py-3">
+                      <button
+                        onClick={() => toggleAward(idx)}
+                        className="w-full flex items-start gap-2 text-left group"
+                      >
+                        <p className="flex-1 text-[14px] max-lg:text-[13px] font-semibold text-white font-roboto leading-snug">
+                          {award.title} <span className="font-light text-[12px]" style={{ color: 'var(--accent-color)' }}>({award.date})</span> <span className="font-light text-[13px]" style={{ color: 'var(--accent-color)' }}>{open ? '[-]' : '[+]'}</span>
+                        </p>
+                      </button>
+                      {open && (
+                        <div className="mt-2 flex flex-col gap-1">
+                          <p className="text-[12px] max-lg:text-[11px] font-roboto font-light" style={{ color: 'var(--accent-color)' }}>
+                            {award.issuer}
+                          </p>
+                          <p className="text-[13px] max-lg:text-[12px] font-roboto font-light text-white leading-relaxed">
+                            {award.description}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Experience Ledger sub-header */}
+              <h4 className="text-[16px] font-medium lg:font-semibold font-roboto mt-8 mb-2" style={{ color: 'var(--accent-color)' }}>
+                Experience Ledger
+              </h4>
+              <div className="flex flex-col">
+                {experiences.map((exp, idx) => {
+                  const open = expandedExps.has(idx);
+                  return (
+                    <div key={idx} className="py-3">
+                      <button
+                        onClick={() => toggleExp(idx)}
+                        className="w-full flex items-start gap-2 text-left group"
+                      >
+                        <p className="flex-1 text-[14px] max-lg:text-[13px] font-semibold text-white font-roboto leading-snug">
+                          {exp.title} <span className="font-light text-[12px]" style={{ color: 'var(--accent-color)' }}>({exp.period})</span> <span className="font-light text-[13px]" style={{ color: 'var(--accent-color)' }}>{open ? '[-]' : '[+]'}</span>
+                        </p>
+                      </button>
+                      {open && (
+                        <div className="mt-2 flex flex-col gap-1.5">
+                          <p className="text-[12px] max-lg:text-[11px] font-roboto font-light" style={{ color: 'var(--accent-color)' }}>
+                            {exp.org}
+                          </p>
+                          <ul className="flex flex-col gap-0.5">
+                            {exp.bullets.map((bullet, bIdx) => (
+                              <li key={bIdx} className="text-[13px] max-lg:text-[12px] font-roboto font-light text-white leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0 before:text-white/40">
+                                {bullet}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* Licenses & Certifications Section */}
         <section className="w-full max-w-7xl px-6 pb-20 z-10 font-roboto">
           <div className="space-y-6">
             <h2 className="text-[11px] uppercase tracking-widest font-roboto" style={{ color: 'var(--accent-color)' }}>
-              // 04. Licenses & Certifications
+              // 05. Licenses & Certifications
             </h2>
             <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight font-roboto text-[24px] max-md:text-[19px]">
               Certifications
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 pt-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 pt-4">
               {certifications.map((cert, idx) => (
                 <div 
                   key={idx} 
-                  className="relative flex items-stretch border rounded-none overflow-hidden group"
+                  className="relative flex items-start border rounded-none overflow-hidden group p-4 md:p-5"
                   style={{ backgroundColor: 'var(--panel-bg)', borderColor: 'var(--panel-border-color)' }}
                 >
-                  {/* Logo container on the left, filling height flush to borders */}
-                  <div className="w-24 sm:w-28 md:w-32 shrink-0 overflow-hidden relative bg-neutral-900 border-r border-[var(--panel-border-color)]">
+                  {/* Logo link on the left, styled like LinkedIn (48px square aligned top-left) */}
+                  <a 
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 overflow-hidden relative bg-neutral-900 flex items-center justify-center"
+                  >
                     <img 
                       src="/images/dicoding_logo.jpg" 
                       alt="Dicoding Indonesia Logo" 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                  </div>
+                  </a>
                   
                   {/* Details container on the right */}
-                  <div className="flex-1 p-4 md:p-6 flex flex-col justify-between gap-4">
-                    {/* Top Row: Details + Dates */}
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
-                      <div className="flex flex-col gap-1">
-                        <h4 className="text-[15px] md:text-[16px] text-white font-bold leading-tight font-roboto">
-                          {cert.title}
-                        </h4>
-                        <p className="text-[13px] text-[#a2b0a4] font-medium font-roboto">
-                          {cert.issuer}
-                        </p>
-                        <p className="text-[12px] text-[#a2b0a4] opacity-80 font-roboto mt-0.5">
-                          Credential ID {cert.credentialId}
-                        </p>
-                      </div>
-                      
-                      {/* Dates on the top right on desktop */}
-                      <div className="text-[12px] text-[#a2b0a4] opacity-90 font-roboto md:text-right shrink-0">
-                        Issued {cert.issueDate} · Expires {cert.expiryDate}
-                      </div>
-                    </div>
-                    
-                    {/* Bottom Row: Show Credential Button on the bottom right */}
-                    <div className="flex justify-end mt-auto">
-                      <a
-                        href={cert.url}
-                        className="inline-flex items-center gap-1.5 px-4 py-1.5 text-[12px] font-bold text-white border border-[var(--border-muted)] rounded-full hover:bg-white/10 hover:border-white transition-colors font-roboto"
-                      >
-                        Show credential
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
+                  <div className="flex-1 pl-4 flex flex-col gap-1">
+                    <h4 className="text-[16px] max-lg:text-[14px] font-medium lg:font-semibold leading-tight font-roboto text-white">
+                      {cert.title}
+                    </h4>
+                    <p className="text-[14px] max-lg:text-[12px] font-medium font-roboto" style={{ color: 'var(--accent-color)' }}>
+                      {cert.issuer}
+                    </p>
+                    <div className="flex justify-between items-center text-[12px] max-lg:text-[10px] text-white font-light font-roboto mt-0.5 w-full">
+                      <span>Cred ID {cert.credentialId}</span>
+                      <span>{cert.issueDate}</span>
                     </div>
                   </div>
                 </div>
@@ -609,9 +808,41 @@ export function LandingPage({ onEnter }: LandingPageProps) {
           </div>
         </section>
 
-        {/* Decorative footer details */}
-        <footer className="w-full py-8 text-center font-prompt text-[9px] text-[#4e6b54] tracking-widest uppercase border-t border-[var(--accent-color)] select-none" style={{ backgroundColor: 'var(--bg-color)' }}>
-          Mizan Ghodafail // Distributed Intelligence Network v0.0.1
+        {/* Footer with Lets Connect Section */}
+        <footer className="w-full py-16 flex items-center justify-center relative overflow-hidden">
+          
+          {/* Content */}
+          <div className="z-10 select-none flex flex-row items-center justify-center gap-6">
+            <h3 className="font-roboto font-bold text-[24px] max-md:text-[19px] tracking-tight leading-none" style={{ color: 'var(--text-color)' }}>
+              Lets Connect<span style={{ color: 'var(--accent-color)' }}>!</span>
+            </h3>
+            
+            {/* Social Icons */}
+            <div className="flex gap-4 items-center">
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="transition-all duration-300 hover:scale-110"
+                style={{ color: 'var(--accent-color)' }}
+              >
+                <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+              <a 
+                href="https://github.com/mie-intel" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="transition-all duration-300 hover:scale-110"
+                style={{ color: 'var(--accent-color)' }}
+              >
+                <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.22.694.825.576C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </footer>
       </div>
     </div>
